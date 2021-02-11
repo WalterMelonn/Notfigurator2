@@ -1,4 +1,0 @@
-cd Users\d.falyakhov\Documents\Source\Notfigurator pyside2-uic "form.ui" -o "form_ui.py"
-
-cd Users\d.falyakhov\Documents\Source\Notfigurator
-C:\Users\d.falyakhov\Documents\source\Notfigurator>pyside2-uic "form.ui" -o "form_ui.py"

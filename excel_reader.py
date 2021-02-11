@@ -2,9 +2,9 @@ import pandas as pd
 
 
 class ReadEx:
-    lltrsDf = pd.read_excel('.\BD_EX.xls', sheet_name='UID LGB')
+    lltrsDf = pd.read_excel('.\BD_EX.xls', sheet_name='LLT-RS EX')
 
-    # UID LGB , LLT-RS EX
+    # UID LGB , LLT-MS EX , LLT-RS EX
     def lltrs_df_get(self):
         return self.lltrsDf
 

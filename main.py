@@ -33,11 +33,11 @@ class NotFigurator(QtWidgets.QWidget, Ui_NotFigurator):
         self.btncounter0 = 0
         self.m1 = 0
 
-        self.grid = QtWidgets.QGridLayout()
+        self.grid = QtWidgets.QVBoxLayout()
         self.itemlist = []
         vbox.addLayout(self.grid)
         vbox.addStretch(3)
-        self.groupBox.setLayout(vbox)
+        self.frame.setLayout(vbox)
         vbox.addWidget(qbtn)
         self.cgen()
 
@@ -59,19 +59,20 @@ class NotFigurator(QtWidgets.QWidget, Ui_NotFigurator):
         for i in range(combobox_need):
             label = QtWidgets.QLabel('Параметр{}'.format(i + 1))
             combobox = QtWidgets.QComboBox()
-            self.grid.addWidget(label, i, 0)
-            self.grid.addWidget(combobox, i, 1)
+            self.grid.addWidget(label, i)
+            self.grid.addWidget(combobox, i)
             self.itemlist.append([label, combobox])
 
         mainDf = er.ReadEx.lltrsDf
-        list1 = []
         global_itemslist = []
-        # combobox_need_func = self.combobox_need_class
+        list1 = []
+
         for current_cell in range(len(mainDf)):
             cell_value = mainDf.iloc[current_cell, 0]
             if cell_value != 'X':
                 itemslist = global_itemslist
                 itemslist.append(mainDf.iloc[current_cell, 2])
+
             else:
                 list1.append(global_itemslist)
                 itemslist = []
@@ -81,15 +82,27 @@ class NotFigurator(QtWidgets.QWidget, Ui_NotFigurator):
         current_combobox_list = list1
 
         for m in range(combobox_need):
+            llt_labelsnamelist = ['Вид:', 'Тип:', 'Присоединение к процессу:', 'Форма уплотнительной поверхности', 'Материал штока', 'Диаметр штока', 'Погрешность измерения', 'Температурное исполнение', 'Корпус', 'Кабельный ввод', 'Первичный преобразователь', 'Поплавок', 'Балансировка поплавка на раздел сред', 'Футеровка поплавка', 'Взрывозащита', 'Дополнительно', 'Первичная государственная поверка']
             nameslist = current_combobox_list[m]
             try:
                 self.itemlist[m][1].addItems(nameslist)
+                self.itemlist[m][0].setText(str(m) + '. ' + str(llt_labelsnamelist[m]))
             except:
                 print(Exception)
             print("Завершение программы заполнения", m, "комбобокса")
 
     def onBtnClick(self):
-        pass
+        def codeFilling():
+            pass
+        codeFilling()
+
+        def descriptionFilling():
+            pass
+        descriptionFilling()
+
+        def priceFilling():
+            pass
+        priceFilling()
 
 
 if __name__ == "__main__":
