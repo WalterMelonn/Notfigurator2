@@ -9,11 +9,13 @@ class ReadEx:
         return self.lltrsDf
 
     def parameters_counter(self):
-        comboboxesNeed = 0
+        comboboxesNeed = 1
         for i in range(len(self.lltrsDf)):
             counter_x = self.lltrsDf.iloc[i, 0]
             if counter_x == 'X':
                 comboboxesNeed += 1
+            elif counter_x:
+                pass
             else:
                 pass
 
@@ -21,5 +23,5 @@ class ReadEx:
 
 
 excelRead = ReadEx()
-# print(excelRead.parameters_counter())
+print(excelRead.parameters_counter())
 

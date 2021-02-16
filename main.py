@@ -66,30 +66,50 @@ class NotFigurator(QtWidgets.QWidget, Ui_NotFigurator):
         mainDf = er.ReadEx.lltrsDf
         global_itemslist = []
         list1 = []
+        last_cell_number = 0
 
         for current_cell in range(len(mainDf)):
             cell_value = mainDf.iloc[current_cell, 0]
             if cell_value != 'X':
                 itemslist = global_itemslist
                 itemslist.append(mainDf.iloc[current_cell, 2])
-
+                last_cell_number = current_cell
+                print(last_cell_number, len(mainDf))
+                if last_cell_number == ((len(mainDf))-1):
+                    try:
+                        print("Entered to the elif")
+                        list1.append(global_itemslist)
+                        itemslist = []
+                        global_itemslist = []
+                    except:
+                        print("Exception list out of range")
             else:
                 list1.append(global_itemslist)
                 itemslist = []
                 global_itemslist = []
         print("Исходный:", list1)
 
+        cells_left = len(mainDf) - last_cell_number
+        """
+        try:
+            for k in range(cells_left):
+                # cell_value = mainDf.iloc[current_cell, 0]
+        except:
+            print(Exception)
+        print("Завершение программы заполнения последнего", "комбобокса")
+        """
         current_combobox_list = list1
 
         for m in range(combobox_need):
-            llt_labelsnamelist = ['Вид:', 'Тип:', 'Присоединение к процессу:', 'Форма уплотнительной поверхности', 'Материал штока', 'Диаметр штока', 'Погрешность измерения', 'Температурное исполнение', 'Корпус', 'Кабельный ввод', 'Первичный преобразователь', 'Поплавок', 'Балансировка поплавка на раздел сред', 'Футеровка поплавка', 'Взрывозащита', 'Дополнительно', 'Первичная государственная поверка']
-            nameslist = current_combobox_list[m]
+            llt_labelsnamelist = ['Вид:', 'Тип:', 'Присоединение к процессу:', 'Форма уплотнительной поверхности', 'Материал штока', 'Диаметр штока', 'Погрешность измерения', 'Температурное исполнение', 'Корпус', 'Кабельный ввод',
+                                  'Первичный преобразователь', 'Поплавок', 'Балансировка поплавка на раздел сред', 'Футеровка поплавка', 'Взрывозащита', 'Дополнительно', 'Первичная государственная поверка']
             try:
+                nameslist = current_combobox_list[m]
                 self.itemlist[m][1].addItems(nameslist)
-                self.itemlist[m][0].setText(str(m) + '. ' + str(llt_labelsnamelist[m]))
+                self.itemlist[m][0].setText(str(m+1) + '. ' + str(llt_labelsnamelist[m]))
             except:
                 print(Exception)
-            print("Завершение программы заполнения", m, "комбобокса")
+            print("Завершение программы заполнения", m+1, "комбобокса")
 
     def onBtnClick(self):
         def codeFilling():
