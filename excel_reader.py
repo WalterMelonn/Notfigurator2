@@ -3,6 +3,7 @@ import pandas as pd
 
 class ReadEx:
     lltrsDf = pd.read_excel('.\BD_EX.xls', sheet_name='LLT-RS EX')
+    # print(lltrsDf)
 
     # UID LGB , LLT-MS EX , LLT-RS EX
     def lltrs_df_get(self):
@@ -18,10 +19,9 @@ class ReadEx:
                 pass
             else:
                 pass
-
         return comboboxesNeed
 
 
 excelRead = ReadEx()
-print(excelRead.parameters_counter())
+# print(excelRead.parameters_counter())
 

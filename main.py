@@ -79,14 +79,12 @@ class NotFigurator(QtWidgets.QWidget, Ui_NotFigurator):
                     try:
                         print("Entered to the elif")
                         list1.append(global_itemslist)
-                        itemslist = []
-                        global_itemslist = []
                     except:
                         print("Exception list out of range")
             else:
                 list1.append(global_itemslist)
-                itemslist = []
                 global_itemslist = []
+                # для ввода первых не выбранных элементов сюда добавить в скобки кавычки
         print("Исходный:", list1)
 
         cells_left = len(mainDf) - last_cell_number
@@ -113,7 +111,24 @@ class NotFigurator(QtWidgets.QWidget, Ui_NotFigurator):
 
     def onBtnClick(self):
         def codeFilling():
-            pass
+            code_of_order_out = ""
+            current_combobox = 0
+            code_order_final = ""
+            current_row = 0
+            cdf = er.ReadEx.lltrsDf
+            try:
+                while current_combobox != combobox_need:
+                    code_order_in_cbox = self.itemlist[current_combobox][1].currentText()
+                    current_row = str(cdf.loc[cdf['Name'] == code_order_in_cbox])
+                    print(current_row)
+                    # current cell = find needed column in current row
+
+                    code_order_final += current_row
+                    current_combobox += 1
+            except:
+                print(Exception)
+            self.lineEdit.setText(code_order_final)
+            print("Завершение записи кода заказа", "")
         codeFilling()
 
         def descriptionFilling():
