@@ -2,7 +2,14 @@ import pandas as pd
 
 
 class ReadEx:
-    lltrsDf = pd.read_excel('.\BD_EX.xls', sheet_name='LLT-RS EX')
+    try:
+        lltrsDf = pd.read_excel('./BD_EX.xls', sheet_name='LLT-RS EX')
+    except:
+        print("OS is not Linux")
+    try:
+        lltrsDf = pd.read_excel('.\BD_EX.xls', sheet_name='LLT-RS EX')
+    except:
+        print("OS is not Windows")
     # print(lltrsDf)
 
     # UID LGB , LLT-MS EX , LLT-RS EX
