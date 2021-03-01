@@ -8,7 +8,7 @@ from form_ui import Ui_NotFigurator
 from PySide2 import QtWidgets
 
 import excel_reader as er
-import pandas as pd
+# import pandas as pd
 
 from PySide2.QtWidgets import QApplication, QWidget, QPushButton, QLayout, QComboBox
 from PySide2.QtCore import QFile
